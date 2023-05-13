@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">AIConverse</string>
+    <string name="heading">AIConverse: AI-powered chat app for intuitive conversations with personalized recommendations and expert guidance.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
