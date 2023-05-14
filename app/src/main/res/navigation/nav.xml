@@ -43,6 +43,8 @@
         tools:layout="@layout/fragment_image_generation" >
         <action
             android:id="@+id/action_imageGenerationFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:enterAnim="@anim/from_top"
+            app:exitAnim="@anim/to_bottom" />
     </fragment>
 </navigation>

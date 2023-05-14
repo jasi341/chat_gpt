@@ -1,12 +1,16 @@
 package com.example.chat_gpt.fragments
 
+import android.content.Context
 import android.os.Binder
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -84,7 +88,7 @@ class ImageGenerationFragment : Fragment() {
             MediaType.parse("application/json"),
             Gson().toJson(
                 ImageGenerationRequest(
-                    n = 1,
+                    n = 2,
                     prompt = binding.userMsg.text.toString(),
                     size = "1024x1024"
 
@@ -120,8 +124,9 @@ class ImageGenerationFragment : Fragment() {
                     }
 
                 }
-                binding.userMsg.text.clear()
-                
+                clear()
+
+
             } catch (e: Exception) {
                 withContext(Dispatchers.Main){
                     Toast.makeText(requireContext(), "Something went wrong !!", Toast.LENGTH_SHORT).show()
@@ -130,5 +135,11 @@ class ImageGenerationFragment : Fragment() {
 
             }
         }
+    }
+
+    private fun clear() {
+        binding.userMsg.text.clear()
+        val inputMethodManager = requireContext().getSystemService(InputMethodManager::class.java)
+        inputMethodManager.hideSoftInputFromWindow(requireView().windowToken, 0)
     }
 }
